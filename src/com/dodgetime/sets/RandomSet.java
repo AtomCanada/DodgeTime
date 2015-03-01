@@ -36,10 +36,12 @@ public class RandomSet extends Set {
 		DTRS_15,
 	}
 	
-	public RandomSet()
+	public RandomSet(Handler handler)
 	{
 		int i = new Random().nextInt(16);
 		this.id = RandomSetID.valueOf("DTRS_" + i);
+		
+		this.handler = handler;
 		
 		initializeSet();
 	}
@@ -67,7 +69,7 @@ public class RandomSet extends Set {
 		} else if(id == RandomSetID.DTRS_1)
 		{
 			addEnemy(new MonsterFloater(1, 1, ObjectType.MONSTER_FLOATER, handler));
-			addEnemy(new Attacker(Game.WIDTH, Game.HEIGHT, ObjectType.MONSTER_FLOATER, handler));
+			addEnemy(new Attacker(Game.WIDTH - 50, Game.HEIGHT - 50, ObjectType.MONSTER_FLOATER, handler));
 		} else if(id == RandomSetID.DTRS_2)
 		{
 			addEnemy(new Shooter(Game.WIDTH - 1, Game.HEIGHT - 1, ObjectType.SHOOTER, handler));
@@ -101,36 +103,109 @@ public class RandomSet extends Set {
 			addEnemy(new Floater(Game.WIDTH / 2, Game.HEIGHT / 2, ObjectType.FLOATER, handler));
 			addEnemy(new Floater(1, 1, ObjectType.FLOATER, handler));
 			addEnemy(new Floater(1, Game.HEIGHT - 1, ObjectType.FLOATER, handler));
+			addEnemy(new Attacker(1, 1, ObjectType.ATTACKER, handler));
 		} else if(id == RandomSetID.DTRS_6)
 		{
-			
+			addEnemy(new Shooter(1, 1, ObjectType.SHOOTER, handler));
+			addEnemy(new Shooter(1, 100, ObjectType.SHOOTER, handler));
+			addEnemy(new Shooter(1, 200, ObjectType.SHOOTER, handler));
+			addEnemy(new Shooter(1, 300, ObjectType.SHOOTER, handler));
 		} else if(id == RandomSetID.DTRS_7)
 		{
-			
+			addEnemy(new MonsterFloater(1, 1, ObjectType.MONSTER_FLOATER, handler));
+			addEnemy(new MonsterFloater(1, 1, ObjectType.MONSTER_FLOATER, handler));
+			addEnemy(new MonsterFloater(1, 1, ObjectType.MONSTER_FLOATER, handler));
 		} else if(id == RandomSetID.DTRS_8)
 		{
-			
+			addEnemy(new Shooter(Game.WIDTH - 60, Game.HEIGHT - 60, ObjectType.SHOOTER, handler));
+			addEnemy(new Shooter(Game.WIDTH - 1, Game.HEIGHT - 1, ObjectType.SHOOTER, handler));
+			addEnemy(new Attacker(1, Game.HEIGHT - 60, ObjectType.ATTACKER, handler));
+			addEnemy(new Attacker(1, Game.HEIGHT - 60, ObjectType.ATTACKER, handler));
 		} else if(id == RandomSetID.DTRS_9)
 		{
-			
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
 		} else if(id == RandomSetID.DTRS_10)
 		{
+			Shooter s = new Shooter(1, 1, ObjectType.SHOOTER, handler);
+			s.setVelX(0);
+			s.setVelY(0);
+			Shooter s1 = new Shooter(1, Game.HEIGHT - 60, ObjectType.SHOOTER, handler);
+			s1.setVelX(0);
+			s1.setVelY(0);
+			Shooter s2 = new Shooter(Game.WIDTH - 60, Game.HEIGHT - 60, ObjectType.SHOOTER, handler);
+			s2.setVelX(0);
+			s2.setVelY(0);
+			Shooter s3 = new Shooter(Game.WIDTH - 60, 1, ObjectType.SHOOTER, handler);
+			s3.setVelX(0);
+			s3.setVelY(0);
 			
+			addEnemy(s);
+			addEnemy(s1);
+			addEnemy(s2);
+			addEnemy(s3);
 		} else if(id == RandomSetID.DTRS_11)
 		{
-			
+			addEnemy(new MonsterFloater(1, 1, ObjectType.MONSTER_FLOATER, handler));
+			addEnemy(new Attacker(1, Game.HEIGHT - 60, ObjectType.ATTACKER, handler));
+			addEnemy(new Attacker(1, Game.HEIGHT - 60, ObjectType.ATTACKER, handler));
+			addEnemy(new Attacker(1, Game.HEIGHT - 60, ObjectType.ATTACKER, handler));
 		} else if(id == RandomSetID.DTRS_12)
 		{
-			
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Shooter(Game.WIDTH - 60, Game.HEIGHT - 60, ObjectType.SHOOTER, handler));
+			addEnemy(new Shooter(Game.WIDTH - 1, Game.HEIGHT - 1, ObjectType.SHOOTER, handler));
 		} else if(id == RandomSetID.DTRS_13)
 		{
-			
+			addEnemy(new Attacker(1, 1, ObjectType.ATTACKER, handler));
+			addEnemy(new Attacker(1, 1, ObjectType.ATTACKER, handler));
+			addEnemy(new Attacker(1, 1, ObjectType.ATTACKER, handler));
+			addEnemy(new Attacker(1, 1, ObjectType.ATTACKER, handler));
 		} else if(id == RandomSetID.DTRS_14)
 		{
+			Shooter s = new Shooter(1, 1, ObjectType.SHOOTER, handler);
+			s.setVelX(0);
+			s.setVelY(0);
+			Shooter s1 = new Shooter(1, Game.HEIGHT - 60, ObjectType.SHOOTER, handler);
+			s1.setVelX(0);
+			s1.setVelY(0);
+			Shooter s2 = new Shooter(Game.WIDTH - 60, Game.HEIGHT - 60, ObjectType.SHOOTER, handler);
+			s2.setVelX(0);
+			s2.setVelY(0);
 			
+			addEnemy(s);
+			addEnemy(s1);
+			addEnemy(s2);
+			
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
 		} else if(id == RandomSetID.DTRS_15)
 		{
-			
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Floater(Game.WIDTH / 2, 10, ObjectType.FLOATER, handler));
+			addEnemy(new Attacker(Game.WIDTH / 2, 10, ObjectType.ATTACKER, handler));
+			addEnemy(new Shooter(Game.WIDTH / 2, 10, ObjectType.SHOOTER, handler));
+			addEnemy(new MonsterFloater(1, 1, ObjectType.MONSTER_FLOATER, handler));
 		}
 	}
 	

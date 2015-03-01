@@ -14,7 +14,7 @@ public class HUD {
 	public static float HEALTH = 100;
 	private int greenValue = 255;
 	
-	public static int seconds = 0;
+	public static int seconds = 290;
 	public static boolean counting = true;
 	private int level = 1;
 	public static boolean regening = false;

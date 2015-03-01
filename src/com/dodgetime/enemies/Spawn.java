@@ -8,7 +8,7 @@ public class Spawn {
 	Handler handler;
 	HUD hud;
 	
-	public int timeKeep = 0;
+	public int timeKeep = 290;
 	
 	public Spawn(Handler handler, HUD hud)
 	{

@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.io.InputStream;
 
 import com.dodgetime.enemies.Attacker;
 import com.dodgetime.enemies.Floater;
@@ -13,6 +14,7 @@ import com.dodgetime.enemies.Spawn;
 import com.dodgetime.hud.HUD;
 import com.dodgetime.input.KeyInput;
 import com.dodgetime.objects.Player;
+import com.dodgetime.sets.Setmanager;
 
 public class Game extends Canvas implements Runnable {
 
@@ -88,6 +90,7 @@ public class Game extends Canvas implements Runnable {
 				System.out.println("FPS: " + frames);
 				frames = 0;
 				runStart();
+				new Setmanager().runAuto(handler, hud);
 			}
 		}
 		stop();
@@ -148,6 +151,17 @@ public class Game extends Canvas implements Runnable {
 		handler.addObject(new Floater(1, 1, ObjectType.FLOATER, handler));
 		handler.addObject(new Floater(1, 1, ObjectType.FLOATER, handler));
 		handler.addObject(new Floater(1, 1, ObjectType.FLOATER, handler));
+		
+		new Setmanager().runAuto(handler, hud);
+		
+		try{
+
+		    InputStream fis = getClass().getResourceAsStream("/com/dodgetime/images/music.mp3");
+		    javazoom.jl.player.Player playMP3 = new javazoom.jl.player.Player(fis);
+
+		    playMP3.play();
+
+		    }catch(Exception e){System.out.println(e);}
 	}
 	
 	public void runStart()
@@ -156,6 +170,8 @@ public class Game extends Canvas implements Runnable {
 		{
 			HUD.seconds = HUD.seconds + 1;					
 			spawner.setTimeKeep(spawner.getTimeKeep() + 1);
+			
+			new Setmanager().runAuto(handler, hud);
 			
 			if(Integer.toString(spawner.getTimeKeep()).endsWith("0") && spawner.getTimeKeep() < 51)
 			{
@@ -305,12 +321,12 @@ public class Game extends Canvas implements Runnable {
 			{
 				HUD.regening = false;
 				
-				handler.addObject(new Attacker(WIDTH - 1, HEIGHT - 1, ObjectType.ATTACKER, handler));
+				handler.addObject(new Attacker(WIDTH - 51, HEIGHT - 1, ObjectType.ATTACKER, handler));
 				handler.addObject(new Shooter(1, 1, ObjectType.SHOOTER, handler));
-				handler.addObject(new Floater(WIDTH - 1, 1, ObjectType.FLOATER, handler));
-				handler.addObject(new Floater(WIDTH - 1, 1, ObjectType.FLOATER, handler));
-				handler.addObject(new Floater(WIDTH - 1, 1, ObjectType.FLOATER, handler));
-				handler.addObject(new Floater(WIDTH - 1, 1, ObjectType.FLOATER, handler));
+				handler.addObject(new Floater(WIDTH - 51, 1, ObjectType.FLOATER, handler));
+				handler.addObject(new Floater(WIDTH - 51, 1, ObjectType.FLOATER, handler));
+				handler.addObject(new Floater(WIDTH - 51, 1, ObjectType.FLOATER, handler));
+				handler.addObject(new Floater(WIDTH - 51, 1, ObjectType.FLOATER, handler));
 				
 				hud.setLevel(hud.getLevel() + 1);
 			}
@@ -326,13 +342,15 @@ public class Game extends Canvas implements Runnable {
 						handler.removeObject(tempObject);
 					}
 				}
+				
+				
 			}
 			
 			if(spawner.getTimeKeep() == 301)
 			{
 				HUD.regening = false;				
 				hud.setLevel(hud.getLevel() + 1);
-				
+				new Setmanager().runAuto(handler, hud);
 				
 			}
 		}
